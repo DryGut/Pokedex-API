@@ -68,8 +68,7 @@ class App():
             for key, value in skill.items():
               label4 = Label(top, text=key+' - '+str(value))
               label4.pack()
-          imgfb = Image.open(f"./sprites/{poke['sprite']}")
-          img = ImageTk.PhotoImage(imgfb.resize((30, 30)))
+          img = ImageTk.PhotoImage(Image.open(f"./sprites/{poke['sprite']}"))
           label5 = Label(top, image=img)
           label5.pack()
           
