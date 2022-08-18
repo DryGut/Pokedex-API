@@ -57,7 +57,7 @@ class App():
     with open('listapokemon.json', 'r') as arq:
       pokelist = json.load(arq)
       for poke in pokelist:
-        if self.pokemon in poke['name']:
+        if poke['name'] == self.pokemon:
           label0 = Label(top, text=poke['name'].title(), fg='red')
           label0.pack()
           
