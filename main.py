@@ -60,17 +60,23 @@ class App():
         if self.pokemon in poke['name']:
           label0 = Label(top, text=poke['name'].title(), fg='red')
           label0.pack()
+          
+          img = ImageTk.PhotoImage(Image.open(f"sprites/{poke['sprite']}"))
+          label1 = Label(top, image=img) 
+          label1.image = img  #mantem uma referencia para que a imagem seja mostrada no widget
+          label1.pack()
+          
           label2 = Label(top, text=[i.title() for i in poke['types']], fg='green')
           label2.pack()
+          
           label3 = Label(top, text=[i.title() for i in poke['ability']], fg='blue')
           label3.pack()
           for skill in poke['stats']:
             for key, value in skill.items():
               label4 = Label(top, text=key+' - '+str(value))
               label4.pack()
-          img = ImageTk.PhotoImage(Image.open(f"./sprites/{poke['sprite']}"))
-          label5 = Label(top, image=img)
-          label5.pack()
+          
+          
           
 
 root = Tk()
