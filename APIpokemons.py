@@ -37,7 +37,7 @@ def req_api():
         a_bichos = {
           'id': conteudo['id'],
           'name': conteudo['name'],
-          'sprite': f'{i+1}.png',
+          'sprite': f"{i+1}.png",
           'types': [],
           'ability': [],
           'stats': []
