@@ -61,13 +61,13 @@ def req_api():
 
 #função para baixar as imagens dos pokemons
 
-def downloadImages():
+def download_images():
   
   for i in range(TOTAL_POKEMONS):
       url = f'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{i+1}.png'
       resp = requests.get(url, allow_redirects=True)
       open(f'sprites/{i+1}.png', 'wb').write(resp.content)
-      print(f'Downloaded sprite {i+1}')
+      print(f'Baixando Sprite {i+1}')
 
 #função para salvar a estrutura de dados em arquivo JSON
 def write_to_json(pokemon_lista):
@@ -78,6 +78,6 @@ def write_to_json(pokemon_lista):
 def main():
   pokemon = req_api()
   write_to_json(pokemon)
-  downloadImages()
+  download_images()
 if __name__ == '__main__':
   main()
