@@ -31,7 +31,7 @@ class App():
     self.title['font'] = ('Calibre', '10', 'bold')
     self.title.pack()
 
-    self.lblnome = Label(self.child, text='Nome do Pokemon:', font=self.fonte, width=15)
+    self.lblnome = Label(self.child, text='Nome do Pokemon:', font=self.fonte, width=20)
     self.lblnome.pack()
     self.txtnome = Entry(self.child)
     self.txtnome['width'] = 20
@@ -48,8 +48,8 @@ class App():
     
     top = Toplevel()
     top.title('Eu Escolho Você')
-    top.geometry('350x300')
-
+    top.geometry('350x400')
+    
     n = self.txtnome.get()
     self.pokemon = n
     self.txtnome.delete(0, END)
@@ -59,25 +59,27 @@ class App():
       for poke in pokelist:
         if poke['name'] == self.pokemon:
           label0 = Label(top, text=poke['name'].title(), fg='red')
+          e = Label(top, text="Nome: ").pack()
           label0.pack()
           
           img = ImageTk.PhotoImage(Image.open(f"sprites/{poke['sprite']}"))
-          label1 = Label(top, image=img) 
+          label1 = Label(top, image=img)
           label1.image = img  #mantem uma referencia para que a imagem seja mostrada no widget
           label1.pack()
           
           label2 = Label(top, text=[i.title() for i in poke['types']], fg='green')
+          e2 = Label(top, text="Tipo: ").pack()
           label2.pack()
           
           label3 = Label(top, text=[i.title() for i in poke['ability']], fg='blue')
+          e3 = Label(top, text="Habilidades: ").pack()
           label3.pack()
+          
+          e4 = Label(top, text="Status: ").pack()
           for skill in poke['stats']:
             for key, value in skill.items():
-              label4 = Label(top, text=key+' - '+str(value))
-              label4.pack()
-          
-          
-          
+              label4 = Label(top, text="--> "+key+' - '+str(value))
+              label4.pack()        
 
 root = Tk()
 app = App(root)
